@@ -11,14 +11,6 @@ var users = require('./routes/users');
 var util = require('util');
 var parser = require('xml2json');
 
-var request = require("request");
-
-
-var isoDate = (new Date()).toISOString();
-request("https://www.googleapis.com/calendar/v3/calendars/rj39klpe7dkg03r82dv5ip8rco%40group.calendar.google.com/events?orderBy=startTime&singleEvents=true&timeMin="+isoDate+"&key=AIzaSyAqfhA0ygWi1VzVxxFqgLp8TOGYrzGQjJg", function(error, response, body) {
-    console.log(body);
-});
-
 var app = express();
 
 // view engine setup
