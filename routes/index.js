@@ -22,7 +22,6 @@ router.get('/', function(req, res) {
 	    	var dateTime = e.start.dateTime || e.start.date;
 	    	var theDate = new Date(dateTime);
 	    	var myTimeZone = new Date();
-	    	theDate.setTime(theDate.getTime() + (myTimeZone.getTimezoneOffset() - theDate.getTimezoneOffset())*60*1000);
 	    	var ret = {
 	    		summary: e.summary.toUpperCase(),
 	    		description: e.description,
