@@ -1,9 +1,18 @@
 var itp = itp || {},
 	main = $('#main');
 itp.init = function(){
-	setInterval(function(){
+	/*setInterval(function(){
 		main.height(window.innerHeight).width(window.innerWidth);
-	}, 1000);
+	}, 1000);*/
+	$('.item').each(function(){
+		var e = $(this), rndA = Math.random() * 0.3 + 0.1, rndB = Math.ceil((Math.random() * 0.5 + 0.5) * 255), rndG = Math.random();
+		rndG = Math.ceil(255 * rndG + rndB * (1 - rndG));
+		e.css('background-color', 'rgba(255,'+rndG+','+rndB+','+rndA+')');
+	});
+	$('.item h2').fitText(1.5);
+	$('.item h3').fitText(2);
+	$('.item div').fitText(2.5);
+	$('.item div.location').fitText(3);
 };
 
 $(function(){

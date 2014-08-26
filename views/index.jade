@@ -1,11 +1,19 @@
 extends layout
 
 block content
-	- var className = 'item '+rows+'rows '+columns+'columns'
+	- var className = 'item '+' rows'+rows+' columns'+columns
 	div#main
 		each item in items
 			div(class=className)
-				h2= item.summary
-				h3
-					span= item.weekDay
-					span= item.dateStr
+				div
+					h2= item.summary
+					h3
+						span= item.weekDay
+						span= item.dateStr
+					if item.description
+						div= item.description
+					if item.timeStr
+						div= item.timeStr
+					if item.location
+						div.location= item.location
+		div.clear
