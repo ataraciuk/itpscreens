@@ -21,11 +21,12 @@ router.get('/', function(req, res) {
 	    result = result.map(function(e) {
 	    	var dateTime = e.start.dateTime || e.start.date;
 	    	var theDate = new Date(dateTime);
+	    	theDate.setTime(theDate.getTime() - theDate.getTimezoneOffset()*60*1000);
 	    	var ret = {
 	    		summary: e.summary.toUpperCase(),
 	    		description: e.description,
-	    		weekDay: getStringDay(theDate.getDay()),
-	    		dateStr: getStringMonth(theDate.getMonth()) + ' ' + theDate.getDate(),
+	    		weekDay: getStringDay(theDate.getUTCDay()),
+	    		dateStr: getStringMonth(theDate.getUTCMonth()) + ' ' + theDate.getUTCDate(),
 	    		location: e.location
 	    	};
 	    	if(e.start.dateTime) ret.timeStr = getStringTime(theDate);
@@ -60,14 +61,14 @@ var getStringMonth = function(n) {
 }
 
 var getStringTime = function(d) {
-	var hour = d.getHours(), meridianStr = ' AM';
+	var hour = d.getUTCHours(), meridianStr = ' AM';
 	if(hour >= 12) {
 		meridianStr = ' PM';
 		if(hour > 12) {
 			hour-= 12;
 		}
 	}
-	var minutes = d.getMinutes();
+	var minutes = d.getUTCMinutes();
 	minutes = (minutes < 10 ? '0' : '') + minutes;
 	return hour + ':' + minutes + ' ' + meridianStr;
 }
