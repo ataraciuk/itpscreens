@@ -13,6 +13,8 @@ itp.init = function(){
 	$('.item h3').fitText(2);
 	$('.item div').fitText(2.5);
 	$('.item div.location').fitText(3);
+	$('.your').fitText();
+	$('.centered p').fitText(3);
 };
 
 $(function(){

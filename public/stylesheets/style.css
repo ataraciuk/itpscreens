@@ -22,10 +22,10 @@ a {
   overflow: hidden;
   width: 100%;
   height: 100%;
-}
-#main .item {
   color: #fff;
   font-family: myriad;
+}
+#main .item {
   float: left;
 }
 #main .item > div {
@@ -76,4 +76,28 @@ a {
 }
 .clear {
   clear: both;
+}
+.centered {
+  width: 60%;
+  margin: 0 auto;
+  position: relative;
+  top: 35%;
+}
+.centered p {
+  text-align: center;
+  padding: 5px 80px;
+}
+#logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.your {
+  text-align: center;
+  letter-spacing: 4px;
+  border: 1px solid #fff;
+  padding: 30px 50px;
+}
+.your + p {
+  margin-top: 50px;
 }

@@ -5,6 +5,7 @@ var request = require("request");
 /* GET home page. */
 router.get('/', function(req, res) {
 	//test calendar is i1i4ebeql2i6gui1prqc3c18c8
+	//empty calendar is mm781483e48kpfjnm88asbglmc
 	var isoDate = (new Date()).toISOString();
 	var calId = req.query.calendar || 'rj39klpe7dkg03r82dv5ip8rco'; //itp calendar
 	request("https://www.googleapis.com/calendar/v3/calendars/"+calId+"%40group.calendar.google.com/events?orderBy=startTime&singleEvents=true&timeMin="+isoDate+"&key=AIzaSyAqfhA0ygWi1VzVxxFqgLp8TOGYrzGQjJg", function(error, response, body) {

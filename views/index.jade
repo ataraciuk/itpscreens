@@ -16,4 +16,11 @@ block content
 						div= item.timeStr
 					if item.location
 						div.location= item.location
-		div.clear
+		if items.length == 0
+			img#logo(src='/images/itp-logo.png' width="10%")
+			div.centered
+				div.your YOUR PROJECT HERE
+				p SUBMIT YOUR video/Project TODAY TO
+				p itpscreens2014@gmail.com
+		else
+			div.clear
