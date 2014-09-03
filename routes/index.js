@@ -7,8 +7,11 @@ router.get('/', function(req, res) {
 	//test calendar is i1i4ebeql2i6gui1prqc3c18c8
 	//empty calendar is mm781483e48kpfjnm88asbglmc
 	var isoDate = (new Date()).toISOString();
+	var nextWeek = new Date();
+	nextWeek.setDate(nextWeek.getDate()+7);
+	nextWeek = nextWeek.toISOString();
 	var calId = req.query.calendar || 'rj39klpe7dkg03r82dv5ip8rco'; //itp calendar
-	request("https://www.googleapis.com/calendar/v3/calendars/"+calId+"%40group.calendar.google.com/events?orderBy=startTime&singleEvents=true&timeMin="+isoDate+"&key=AIzaSyAqfhA0ygWi1VzVxxFqgLp8TOGYrzGQjJg", function(error, response, body) {
+	request("https://www.googleapis.com/calendar/v3/calendars/"+calId+"%40group.calendar.google.com/events?orderBy=startTime&singleEvents=true&timeMin="+isoDate+"&timeMax="+nextWeek+"&key=AIzaSyBilHKdjV4H419PzJEt18rhWW2NpCUOfGM", function(error, response, body) {
 	    var result = JSON.parse(body).items;
 	    result.splice(12, result.length - 12); //setting max length of 12
 	    var rows = result.length === 3 ? 2 : Math.ceil(result.length / 3);
@@ -25,9 +28,11 @@ router.get('/', function(req, res) {
 	    	var dateTime = e.start.dateTime || e.start.date;
 	    	var theDate = new Date(dateTime);
 	    	var myTimeZone = new Date();
+	    	var description = e.description || '';
+	    	var summary = e.summary.toUpperCase();
 	    	var ret = {
-	    		summary: e.summary.toUpperCase(),
-	    		description: e.description,
+	    		summary: summary.length > 40 ? (summary.substr(0,40) + '...') : summary,
+	    		description: description.length > 100 ? (description.substr(0,100) + '...') : description,
 	    		weekDay: getStringDay(theDate.getDay()),
 	    		dateStr: getStringMonth(theDate.getMonth()) + ' ' + theDate.getDate(),
 	    		location: e.location
