@@ -9,7 +9,7 @@ a
 #main
 	background: url('../images/bg.jpg') no-repeat
 	background-size: 100% 100%
-	//overflow: hidden
+	overflow: auto
 	width: 100%
 	height: 100%
 	color: white
@@ -26,7 +26,7 @@ a
 		&.rows4
 			height: 25%
 		&.rows3
-			height: 33.4%
+			height: 33.3%
 		&.rows2
 			height: 50%
 		&.rows1
@@ -50,6 +50,21 @@ a
 			margin-bottom: 4%
 		.location
 			font-size: 1vw
+
+@media all and (max-width: 1199px)
+	#main .item.columns3
+		width: 50%
+		&:nth-child(3n)
+			width: 50%
+
+@media all and (max-width: 799px)
+	#main .item
+		&.columns3
+			width: 100%
+			&:nth-child(3n)
+				width: 100%
+		&.columns2
+			width: 100%
 			
 .clear
 	clear: both

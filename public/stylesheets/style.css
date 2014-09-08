@@ -19,6 +19,7 @@ a {
 #main {
   background: url("../images/bg.jpg") no-repeat;
   background-size: 100% 100%;
+  overflow: auto;
   width: 100%;
   height: 100%;
   color: #fff;
@@ -40,7 +41,7 @@ a {
   height: 25%;
 }
 #main .item.rows3 {
-  height: 33.4%;
+  height: 33.3%;
 }
 #main .item.rows2 {
   height: 50%;
@@ -74,6 +75,25 @@ a {
 }
 #main .item .location {
   font-size: 1vw;
+}
+@media all and (max-width: 1199px) {
+  #main .item.columns3 {
+    width: 50%;
+  }
+  #main .item.columns3:nth-child(3n) {
+    width: 50%;
+  }
+}
+@media all and (max-width: 799px) {
+  #main .item.columns3 {
+    width: 100%;
+  }
+  #main .item.columns3:nth-child(3n) {
+    width: 100%;
+  }
+  #main .item.columns2 {
+    width: 100%;
+  }
 }
 .clear {
   clear: both;
